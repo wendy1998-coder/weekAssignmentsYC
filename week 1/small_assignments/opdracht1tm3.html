@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>opdracht 1tm3</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>
+        $(window).on("load", function () {
+            const submit = $(document.getElementById("submit"));
+            const text = $(document.getElementById("text"));
+
+            submit.on("click", function () {
+                const value = text.val();
+                let letter = $(document.getElementById("letter")).val();
+
+                if (letter === "") {
+                    letter = "e"
+                }
+
+                // opdracht 1
+                if (value === "hallo") {
+                    alert("Welkom")
+                } else if (value === "doei") {
+                    alert("Tot de volgende keer")
+                }
+
+                // opdracht (2) 3
+                if (value.includes(letter)) {
+                    const splt = value.split("");
+                    let amount = 0;
+                    splt.forEach(function (item) {
+                        if (item === letter) {
+                            amount++
+                        }
+                    });
+
+                    alert(value + " bevat de letter " + letter + " " + amount + " keer.")
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<label>
+    text <input type="text" name="text" id="text" /><br/>
+</label>
+<label>
+    letter to check <input name="letter" id="letter"><br/>
+</label>
+<input type="submit" value="submit" id="submit">
+</body>
+</html>

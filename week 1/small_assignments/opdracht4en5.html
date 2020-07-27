@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>opdracht 4 en 5</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>
+        $(window).on("load", function () {
+            const buttons = $(document.getElementsByClassName("btn"));
+            const resultDiv = document.getElementById("div");
+            let click_history = [];
+
+            buttons.on("click", function () {
+                const letter = $(this).val();
+                const present = click_history.includes(letter);
+                click_history.push(letter);
+                if (present) {
+                    let amount = 0;
+                    click_history.forEach(function (item) {
+                        if (item === letter) {
+                            amount++
+                        }
+                    });
+                    alert("U heeft op de knop " + letter + " geklikt, maar u heeft hier al een keer (om precies te zijn " + amount + " keer) op geklikt, dus dit is niet toegestaan.")
+                }
+
+                let strng = "";
+                let first = true;
+                click_history.forEach(function (letter) {
+                    if (!first) {
+                        strng += "<br/>"
+                    } else {
+                        first = false;
+                    }
+                    strng += "U heeft op knop " + letter + " geklikt";
+                });
+                resultDiv.innerHTML = strng;
+            })
+        });
+    </script>
+</head>
+<body>
+    <button value="A" class="btn">A</button>
+    <button value="B" class="btn">B</button>
+    <button value="C" class="btn">C</button>
+    <button value="D" class="btn">D</button>
+
+    <div id="div">
+
+    </div>
+</body>
+</html>

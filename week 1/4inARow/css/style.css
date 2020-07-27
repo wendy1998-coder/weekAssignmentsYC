@@ -1,0 +1,169 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,300);
+body {
+    background-color: #000;
+    margin: auto;
+    font-family: "Open Sans";
+    color: white;
+    font-size: 14pt;
+}
+
+.inline {
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+
+h3 {
+    color: white;
+}
+
+.row {
+    max-width: 100%;
+}
+
+.miniature {
+    min-width: 20px;
+    min-height: 20px;
+    background-position-y: center;
+}
+
+/*grid systeem*/
+#grid {
+    width: auto;
+    min-width: max-content;
+}
+#grid td {
+    height: 100px;
+    max-height: 100px;
+    display: inline-block;
+    width: 100px;
+    max-width: 100px;
+    position: relative;
+}
+
+.column_hover {
+    background-color: #CD6734;
+}
+
+/*stones*/
+.stone {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
+
+/*real stones*/
+.red_stone {
+    background-image: url("../images/red_stone.png");
+}
+
+.yellow_stone {
+    background-image: url("../images/yellow_stone.png");
+}
+
+/*see through for hovering*/
+.red_hover::after {
+    background-image: url("../images/red_stone.png");
+    opacity: 0.4;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+
+}
+.yellow_hover::after {
+    background-image: url("../images/yellow_stone.png");
+    opacity: 0.4;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
+
+/*animators*/
+.animator {
+    display: none;
+    position: absolute;
+    max-width: 100px;
+    max-height: 100px;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.animator.inProgress {
+    display: block;
+}
+
+/*CSS menu*/
+#cssmenu {
+    line-height: 1;
+    background-color: #000;
+    display: inline-block;
+    zoom: 1;
+    font-size: 12px;
+}
+
+#cssmenu ul,
+#cssmenu ul li {
+    list-style: none;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+#cssmenu ul {
+    position: relative;
+    z-index: 1000;
+    float: left;
+}
+#cssmenu ul li {
+    min-height: 1px;
+    vertical-align: middle;
+    position: relative;
+}
+#cssmenu ul li.hover,
+#cssmenu ul li:hover {
+    position: relative;
+    cursor: default;
+}
+
+#cssmenu:before {
+    content: '';
+    display: block;
+}
+#cssmenu:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+#cssmenu a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #7C35B4;
+    font-weight: bold;
+    border-right: 1px solid #29ABE2;
+    border-bottom: 1px solid #29ABE2;
+}
+
+#cssmenu li:hover,
+#cssmenu .active {
+    border-right: 3px solid #29ABE2;
+    font-weight: bolder;
+}
